@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import { ArrowLeft } from 'lucide-react';
-import { DenunciaContext } from './context/DenunciaContext';
 
-const EscolhaGenerica = ({ 
+import { ArrowLeft } from 'lucide-react';
+
+
+const BotaoGenerico = ({ 
   titulo, 
   subtitulo, 
   opcoes, 
@@ -11,7 +11,7 @@ const EscolhaGenerica = ({
   onBack,
   iconeHeader 
 }) => {
-  const { denunciaData } = useContext(DenunciaContext);
+  
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-12">
@@ -70,4 +70,4 @@ const EscolhaGenerica = ({
   );
 };
 
-export default EscolhaGenerica;
+export default BotaoGenerico;
