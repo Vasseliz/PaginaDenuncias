@@ -1,15 +1,16 @@
 import React, { useContext } from 'react';
-import { User, Eye, FileText, Lock, Shield } from 'lucide-react';
 import { DenunciaContext } from './context/DenunciaContext';
 import BotaoGenerico from './components/BotaoGenerico';
-// import configuracoesTelas from './ConfiguracoesTelas';  
 import { criarConfiguracoesTelas } from "./Configuracoes/BotoesConfig";
-import { obterPerguntasFormulario } from './Configuracoes/PerguntasConfig';
+import { obterPerguntasOrdenadas } from './Configuracoes/obterPerguntasOrdenadas';
+import FormularioDinamico from "./components/FormularioDinamico"
+// import FormularioDinamico
 
 
 
 const MainContent = () => {
   const { currentStep, denunciaData, updateDenunciaData, setCurrentStep } = useContext(DenunciaContext);
+  
 
 const renderStep = () => {
 
@@ -18,7 +19,7 @@ const renderStep = () => {
       case "modalidade":
          return <Botoes />;
       case "formulario":
-        <FormularioDinamico/>
+        return <Formulario/>
         break;
 
       default:
@@ -26,6 +27,12 @@ const renderStep = () => {
     }
 
 
+
+  function Formulario () {
+    const perguntas  = obterPerguntasOrdenadas(denunciaData.tipoUsuario, denunciaData.tipoDenuncia);
+
+    return <FormularioDinamico perguntas={perguntas} />
+  }
 
     function Botoes () {
 const configuracoesTelas = criarConfiguracoesTelas(updateDenunciaData, setCurrentStep, denunciaData);
