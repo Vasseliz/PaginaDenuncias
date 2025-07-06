@@ -1,7 +1,7 @@
 // No seu App.jsx ou componente pai
 import { DenunciaProvider } from './context/DenunciaContext';
 import MainContent from './MainContent';
-import { Shield } from 'lucide-react';
+
 import ProgressBar from './components/ProgressBar';
 import HeaderComply from './components/HeaderComply';
 
